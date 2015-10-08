@@ -24,6 +24,8 @@ gen/
 /.project
 /.classpath
 /*components*
+project/project/*
+project/target/*
 
 # Misc. files
 out/
