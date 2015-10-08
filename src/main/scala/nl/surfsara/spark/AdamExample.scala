@@ -14,7 +14,7 @@ object AdamExample {
     val ac = new ADAMContext(sc)
     
     // Read some reads. These come from a 1000genomes BAM file and were converted earlier
-    val reads = ac.loadAlignments("NA21144.chrom11.ILLUMINA.adam")
+    val reads = ac.loadAlignments("/user/mathijsk/NA21144.chrom11.ILLUMINA.adam")
     reads.cache();
     
     val kmers = reads.flatMap { read =>
@@ -24,6 +24,6 @@ object AdamExample {
       .sortByKey(ascending = false)
     // Print the top 10 most common 21-mers
     kmers.take(10).foreach(println)
-    kmers.saveAsTextFile("NA21144.chrom11.ILLUMINA.adam.kmers")
+    kmers.saveAsTextFile("user/mathijsk/NA21144.chrom11.ILLUMINA.adam.kmers")
   }
 }

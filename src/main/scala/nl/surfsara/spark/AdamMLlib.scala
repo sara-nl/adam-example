@@ -22,7 +22,7 @@ object AdamMLlib {
     val ac = new ADAMContext(sc)
 
     // Load the prepared genotypes in an RRD, cache this RRD.
-    val genotypes: RDD[Genotype] = ac.loadGenotypes("/user/mathijsk/ALL.chr1.phase1.projectConsensus.genotypes.vcf.adam")
+    val genotypes: RDD[Genotype] = ac.loadGenotypes("/user/mathijsk/ALL.chr22.phase1.projectConsensus.genotypes.vcf.adam")
     genotypes.cache();
     println("First id: " + genotypes.first().sampleId)
 
@@ -30,10 +30,10 @@ object AdamMLlib {
     println("Num samples total: " + c)
 
     // Select an arbitrary slice of the chromosome to limit dataset size/
-    // val start = 10000000
-    // val end = 17000000
-    val start = 1
-    val end = 1000000
+    val start = 10000000
+    val end = 17000000
+    //val start = 1
+    //val end = 1000000
 
     val sampledGts = genotypes.filter(g => (g.getVariant.getStart >= start && g.getVariant.getEnd <= end))
 
